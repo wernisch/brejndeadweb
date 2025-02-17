@@ -105,24 +105,18 @@
   </footer>
 
   <script>
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
     const fetchGames = async () => {
       try {
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        const apiUrl = 'https://games.roblox.com/v2/groups/34806351/gamesV2';
+        const proxyUrl = 'https://api.allorigins.win/get?url=';
+        const apiUrl = encodeURIComponent('https://games.roblox.com/v2/groups/34806351/gamesV2');
         const response = await fetch(proxyUrl + apiUrl);
         const data = await response.json();
-        const games = data.data;
-
+        const games = JSON.parse(data.contents).data;
+  
         const gamesContainer = document.getElementById('findit-games');
-
+  
         gamesContainer.innerHTML = '';
-
+  
         games.forEach(game => {
           const gameCard = `
             <div class="game-card bg-gray-900 p-6 border border-gray-800">
@@ -138,7 +132,6 @@
         console.error('Error fetching games:', error);
       }
     };
-
     fetchGames();
   </script>
 </body>
