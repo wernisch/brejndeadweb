@@ -113,7 +113,9 @@
 
     const fetchGames = async () => {
       try {
-        const response = await fetch('https://games.roblox.com/v2/groups/34806351/gamesV2');
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const apiUrl = 'https://games.roblox.com/v2/groups/34806351/gamesV2';
+        const response = await fetch(proxyUrl + apiUrl);
         const data = await response.json();
         const games = data.data;
 
