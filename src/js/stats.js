@@ -1,6 +1,6 @@
 import { CountUp } from "/src/js/countup.js";
 
-let proxyUrl = "https://workers-playground-white-credit-775c.bloxyhdd.workers.dev/?url=";
+let proxyUrl = "https://billowing-frog-ed5c.bloxyhdd.workers.dev/?url=";
 let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 let gameIds = window.gameIds || [];
