@@ -9,72 +9,7 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/src/logo.png" />
     <style>
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: Rajdhani, sans-serif
-        }
-
-        .hero-heading {
-            font-family: Orbitron, sans-serif
-        }
-
-        .stats-box p {
-            font-family: 'Share Tech Mono', monospace
-        }
-
-        .glass-bg {
-            background: linear-gradient(135deg, rgba(255, 255, 255, .05) 0, rgba(255, 255, 255, .02) 100%);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, .5);
-            border: 1px solid rgba(255, 255, 255, .2)
-        }
-
-        ::selection {
-            background: #fff;
-            color: #000
-        }
-
-        .bg-white ::selection {
-            background: #000;
-            color: #fff
-        }
-
-        .glass-bg ::selection {
-            background: rgba(255, 255, 255, .2);
-            color: #fff
-        }
-
-        header ::selection {
-            background: #fff;
-            color: #000
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-                transform: translateY(20px)
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .animate-fade-in {
-            animation: 1s ease-out forwards fade-in
-        }
+html{scroll-behavior:smooth}body{font-family:'Space Grotesk',sans-serif}h1,h2,h3,h4{font-family:Rajdhani,sans-serif}.hero-heading{font-family:Orbitron,sans-serif}.stats-box p{font-family:'Share Tech Mono',monospace}.glass-bg{background:linear-gradient(135deg,rgb(255 255 255 / .05) 0,rgb(255 255 255 / .02) 100%);backdrop-filter:blur(20px);border-radius:20px;box-shadow:0 4px 30px rgb(0 0 0 / .5);border:1px solid rgb(255 255 255 / .2)}::selection{background:#fff;color:#000}.bg-white ::selection{background:#000;color:#fff}.glass-bg ::selection{background:rgb(255 255 255 / .2);color:#fff}header ::selection{background:#fff;color:#000}@keyframes fade-in{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}.animate-fade-in{animation:1s ease-out forwards fade-in}
     </style>
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500&display=swap"
@@ -83,22 +18,27 @@
 
 <body class="bg-black text-white font-sans">
     <header class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-lg shadow-lg">
-        <div class="max-w-7xl mx-auto flex justify-between items-center p-6">
-            <h1 class="text-2xl font-bold tracking-wider hover:text-gray-300 transition">Brejndead</h1>
-            <nav class="space-x-6 hidden md:flex items-center">
-                <a href="#about" class="relative group">
-                    <span class="">About</span>
-                    <span class="block w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <h1 class="text-2xl font-bold tracking-wider text-white hover:text-gray-300 transition" style="font-family: 'Orbitron', sans-serif;">
+                Brejndead
+            </h1>
+            <nav class="space-x-6 hidden md:flex items-center text-sm uppercase tracking-wider" style="font-family: 'Orbitron', sans-serif;">
+                <a href="#about" class="relative group text-white hover:text-white transition duration-300">
+                    <span class="pb-1 group-hover:text-white">About</span>
+                    <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#projects" class="relative group">
-                    <span class="">Projects</span>
-                    <span class="block w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+                <a href="#projects" class="relative group text-white hover:text-white transition duration-300">
+                    <span class="pb-1 group-hover:text-white">Projects</span>
+                    <span class="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="https://discord.com/users/your-discord-id" target="_blank"
-                    class="bg-white text-black px-4 py-2 rounded-full hover:bg-gray-300 transition">Contact</a>
+                    class="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-all duration-300 font-semibold">
+                    Contact
+                </a>
             </nav>
         </div>
     </header>
+   
 
     <section class="h-screen flex items-center justify-center text-center relative overflow-hidden" id="home">
         <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 blur-3xl"></div>
