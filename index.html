@@ -4,59 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brejndead</title>
+    <title>Brejndead Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-      <link rel="icon" type="image/png" href="/src/logo.png" />
+    <link rel="icon" type="image/png" href="/src/logo.png" />
     <style>
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: Rajdhani, sans-serif
+        }
+
+        .hero-heading {
+            font-family: Orbitron, sans-serif
+        }
+
+        .stats-box p {
+            font-family: 'Share Tech Mono', monospace
         }
 
         .glass-bg {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, .05) 0, rgba(255, 255, 255, .02) 100%);
             backdrop-filter: blur(20px);
             border-radius: 20px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, .5);
+            border: 1px solid rgba(255, 255, 255, .2)
         }
 
         ::selection {
-            background: white;
-            color: black;
+            background: #fff;
+            color: #000
         }
 
         .bg-white ::selection {
-            background: black;
-            color: white;
+            background: #000;
+            color: #fff
         }
 
         .glass-bg ::selection {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            background: rgba(255, 255, 255, .2);
+            color: #fff
         }
 
         header ::selection {
-            background: white;
-            color: black;
+            background: #fff;
+            color: #000
         }
 
         @keyframes fade-in {
             0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(20px)
             }
 
             100% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0)
             }
         }
 
         .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
+            animation: 1s ease-out forwards fade-in
         }
     </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="bg-black text-white font-sans">
@@ -82,7 +104,8 @@
         <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 blur-3xl"></div>
 
         <div class="glass-bg p-12 md:p-24 relative z-10 opacity-0 animate-fade-in">
-            <h2 class="text-5xl md:text-7xl font-bold mb-6">Hello, I'm <span class="text-white">Brejndead</span></h2>
+            <h2 class="text-5xl md:text-7xl font-bold mb-6 hero-heading">Hello, I'm <span
+                    class="text-white">Brejndead</span></h2>
             <p class="text-gray-400 text-lg md:text-xl max-w-xl mx-auto">Roblox Scripter & Web Developer for Roblox
                 Studios</p>
         </div>
@@ -113,60 +136,93 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div class="flex flex-col items-center">
                     <img src="/src/img/parkourRushBanner.png" alt="Game 1" class="rounded-xl mb-4 shadow-lg">
-                    <p class="font-medium">Parkour Rush</p>
+                    <a target="_blank" href="https://www.roblox.com/games/75917364083659/UPD-Parkour-Rush"
+                        class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
+                        style="font-family: 'Orbitron', sans-serif;">Parkour Rush</a>
                 </div>
                 <div class="flex flex-col items-center">
                     <img src="/src/img/FindtheDucks2.png" alt="Game 2" class="rounded-xl mb-4 shadow-lg">
-                    <p class="font-medium">Find the Ducks</p>
+                    <a target="_blank" href="https://www.roblox.com/games/110729496024718/Find-the-Ducks-2"
+                        class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
+                        style="font-family: 'Orbitron', sans-serif;">Find the Ducks</a>
                 </div>
                 <div class="flex flex-col items-center">
                     <img src="/src/img/SquidGames.png" alt="Game 3" class="rounded-xl mb-4 shadow-lg">
-                    <p class="font-medium">Squid Game</p>
+                    <a target="_blank" href="https://www.roblox.com/games/7585576110/Squid-Game"
+                        class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
+                        style="font-family: 'Orbitron', sans-serif;">Squid Game</a>
                 </div>
             </div>
+
             <div class="text-center mb-8">
                 <p class="text-gray-600">and many more...</p>
             </div>
+
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                <div class="bg-black text-white p-2 rounded-xl text-center shadow-md text-xs">
-                    <p class="font-bold">Active Players</p>
-                    <p id="player-count" class="text-lg mt-1">0</p>
+                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                    style="font-family: 'Share Tech Mono', monospace;">
+                    <p class="uppercase tracking-wide text-gray-400 text-xs">Active Players</p>
+                    <p id="player-count" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
-                <div class="bg-black text-white p-2 rounded-xl text-center shadow-md text-xs">
-                    <p class="font-bold">Total Visits</p>
-                    <p id="visits-count" class="text-lg mt-1">0</p>
+                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                    style="font-family: 'Share Tech Mono', monospace;">
+                    <p class="uppercase tracking-wide text-gray-400 text-xs">Total Visits</p>
+                    <p id="visits-count" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
-                <div class="bg-black text-white p-2 rounded-xl text-center shadow-md text-xs">
-                    <p class="font-bold">Group Members</p>
-                    <p id="group-members" class="text-lg mt-1">0</p>
+                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                    style="font-family: 'Share Tech Mono', monospace;">
+                    <p class="uppercase tracking-wide text-gray-400 text-xs">Group Members</p>
+                    <p id="group-members" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
-                <div class="bg-black text-white p-2 rounded-xl text-center shadow-md text-xs">
-                    <p class="font-bold">Total Games</p>
-                    <p id="games-created" class="text-lg mt-1">0</p>
+                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                    style="font-family: 'Share Tech Mono', monospace;">
+                    <p class="uppercase tracking-wide text-gray-400 text-xs">Total Games</p>
+                    <p id="games-created" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
             </div>
 
             <h4 class="text-2xl font-semibold mb-6">Websites</h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="border border-black rounded-2xl p-4 flex flex-col items-center hover:scale-105 transition">
-                    <img src="/src/img/MouseclickStudio.png" alt="Mouseclick Studio" class="rounded-lg mb-4">
-                    <p class="font-medium mb-2">mouseclick.games</p>
+                <div
+                    class="border border-black rounded-xl p-6 flex flex-col items-center hover:scale-[1.03] transition-transform duration-300 bg-white">
+                    <img src="/src/img/MouseclickStudio.png" alt="Mouseclick Studio" class="rounded-lg mb-4 shadow">
+                    <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
+                        style="font-family: 'Orbitron', sans-serif;">
+                        mouseclick.games
+                    </p>
                     <a href="https://mouseclick.games" target="_blank"
-                        class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">Visit</a>
+                        class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
+                        Visit
+                    </a>
                 </div>
-                <div class="border border-black rounded-2xl p-4 flex flex-col items-center hover:scale-105 transition">
-                    <img src="/src/img/MatiGamesStudio.png" alt="MatiGames Studio" class="rounded-lg mb-4">
-                    <p class="font-medium mb-2">matigames.com</p>
+
+                <div
+                    class="border border-black rounded-xl p-6 flex flex-col items-center hover:scale-[1.03] transition-transform duration-300 bg-white">
+                    <img src="/src/img/MatiGamesStudio.png" alt="MatiGames Studio" class="rounded-lg mb-4 shadow">
+                    <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
+                        style="font-family: 'Orbitron', sans-serif;">
+                        matigames.com
+                    </p>
                     <a href="https://matigames.com" target="_blank"
-                        class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">Visit</a>
+                        class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
+                        Visit
+                    </a>
                 </div>
-                <div class="border border-black rounded-2xl p-4 flex flex-col items-center hover:scale-105 transition">
-                    <img src="/src/img/FlorizWIP.png" alt="FlorizGames Studio" class="rounded-lg mb-4">
-                    <p class="font-medium mb-2">florizgames.com</p>
+
+                <div
+                    class="border border-black rounded-xl p-6 flex flex-col items-center hover:scale-[1.03] transition-transform duration-300 bg-white">
+                    <img src="/src/img/FlorizWIP.png" alt="FlorizGames Studio" class="rounded-lg mb-4 shadow">
+                    <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
+                        style="font-family: 'Orbitron', sans-serif;">
+                        florizgames.com
+                    </p>
                     <a href="https://florizgames.com" target="_blank"
-                        class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">Visit</a>
+                        class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
+                        Visit
+                    </a>
                 </div>
             </div>
+
         </div>
     </section>
 
