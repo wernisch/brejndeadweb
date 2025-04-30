@@ -1,6 +1,6 @@
 import { CountUp } from "/src/js/countup.js";
 
-let proxyUrl = "https://billowing-frog-ed5c.bloxyhdd.workers.dev/?url=";
+let proxyUrl = "https://workers-playground-white-credit-775c.bloxyhdd.workers.dev/?url=";
 let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 let gameIds = window.gameIds || [];
@@ -74,5 +74,19 @@ async function getTotalData() {
     gamesCreatedDisplay.update(gameIds.length);
 }
 
-getTotalData();
-    
+let hasLoadedStats = false;
+
+const statsSection = document.getElementById("stats");
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !hasLoadedStats) {
+            hasLoadedStats = true;
+            getTotalData();
+            observer.unobserve(statsSection);
+        }
+    });
+}, {
+    threshold: 0.4
+});
+
+observer.observe(statsSection);
