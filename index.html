@@ -10,7 +10,9 @@
     <link rel="icon" type="image/png" href="/src/logo.png" />
     <style>
 html{scroll-behavior:smooth}body{font-family:'Space Grotesk',sans-serif}h1,h2,h3,h4{font-family:Rajdhani,sans-serif}.hero-heading{font-family:Orbitron,sans-serif}.stats-box p{font-family:'Share Tech Mono',monospace}.glass-bg{background:linear-gradient(135deg,rgb(255 255 255 / .05) 0,rgb(255 255 255 / .02) 100%);backdrop-filter:blur(20px);border-radius:20px;box-shadow:0 4px 30px rgb(0 0 0 / .5);border:1px solid rgb(255 255 255 / .2)}::selection{background:#fff;color:#000}.bg-white ::selection{background:#000;color:#fff}.glass-bg ::selection{background:rgb(255 255 255 / .2);color:#fff}header ::selection{background:#fff;color:#000}@keyframes fade-in{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}.animate-fade-in{animation:1s ease-out forwards fade-in}
-    </style>
+.clipped {
+            clip-path: polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px);
+        }    </style>
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500&display=swap"
         rel="stylesheet">
@@ -99,22 +101,22 @@ html{scroll-behavior:smooth}body{font-family:'Space Grotesk',sans-serif}h1,h2,h3
             </div>
 
             <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
                     style="font-family: 'Share Tech Mono', monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Active Players</p>
                     <p id="player-count" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
-                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
                     style="font-family: 'Share Tech Mono', monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Total Visits</p>
                     <p id="visits-count" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
-                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
                     style="font-family: 'Share Tech Mono', monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Group Members</p>
                     <p id="group-members" class="text-2xl mt-2 font-bold text-white">0</p>
                 </div>
-                <div class="bg-black text-white p-4 rounded-2xl text-center shadow-lg text-sm font-mono"
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
                     style="font-family: 'Share Tech Mono', monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Total Games</p>
                     <p id="games-created" class="text-2xl mt-2 font-bold text-white">0</p>
