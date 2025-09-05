@@ -1,92 +1,95 @@
 import { CountUp } from "/src/js/countup.js";
 
-let proxyUrl = "https://workers-playground-white-credit-775c.bloxyhdd.workers.dev/?url=";
-let wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+const JsonUrl = "https://raw.githubusercontent.com/wernisch/mati-games-stats/main/public/games.json";
 
-let gameIds = window.gameIds || [];
-let groupIds = window.groupIds || [];
+let PlayerCountDisplay, VisitsCountDisplay, GamesCreatedDisplay, AverageRatingDisplay;
 
-async function getGameData(universeId) {
+function InitializeCountUp(GamesCreated) {
+  PlayerCountDisplay = new CountUp("player-count", 0, { duration: 2, separator: "," });
+  VisitsCountDisplay = new CountUp("visits-count", 0, { duration: 2, separator: "," });
+  GamesCreatedDisplay = new CountUp("games-created", 0, { duration: 2, separator: ",", suffix: "+" });
+  AverageRatingDisplay = new CountUp("average-rating", 0, { duration: 1, decimalPlaces: 0, suffix: "%" });
+
+  PlayerCountDisplay.start();
+  VisitsCountDisplay.start();
+  GamesCreatedDisplay.start();
+  AverageRatingDisplay.start();
+
+  GamesCreatedDisplay.update(GamesCreated);
+}
+
+function UpdateCountDisplays(PlayerCount, VisitsCount, AvgRating) {
+  PlayerCountDisplay?.update(PlayerCount);
+  VisitsCountDisplay?.update(VisitsCount);
+  AverageRatingDisplay?.update(AvgRating);
+
+  const heroGamesEl = document.getElementById("hero-games");
+  const heroPlayersEl = document.getElementById("hero-players");
+  const heroRatingEl = document.getElementById("hero-rating");
+
+  if (heroGamesEl)   heroGamesEl.textContent = `${GamesCreatedDisplay ? "" : ""}${GamesCreatedDisplay ? "" : ""}`; // no-op; set below
+  if (heroPlayersEl) heroPlayersEl.textContent = PlayerCount.toLocaleString();
+  if (heroRatingEl)  heroRatingEl.textContent = `${AvgRating}%`;
+}
+
+async function FetchJsonWithRetry(url, retries = 3, delayMs = 600) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
     try {
-        let apiUrl = `https://games.roblox.com/v1/games?universeIds=${universeId}`;
-        let response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
-        if (response.ok) {
-            let json = await response.json();
-            if (json.data && json.data.length > 0) {
-                let game = json.data[0];
-                return {
-                    id: game.id,
-                    playing: game.playing || 0,
-                    visits: game.visits || 0
-                };
-            }
-        } else if (response.status === 429) {
-            await wait(500);
-            return getGameData(universeId);
-        }
-    } catch (error) {
-        console.error("Error fetching game data:", error);
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      if (attempt === retries) throw err;
+      await new Promise(r => setTimeout(r, delayMs * (attempt + 1)));
     }
-    return { id: universeId, playing: 0, visits: 0 };
+  }
 }
 
-async function getGroupMembers(groupId) {
-    try {
-        let apiUrl = `https://groups.roblox.com/v1/groups/${groupId}`;
-        let response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
-        if (response.ok) {
-            let json = await response.json();
-            return json.memberCount || 0;
-        } else if (response.status === 429) {
-            await wait(500);
-            return getGroupMembers(groupId);
-        }
-    } catch (error) {
-        console.error("Error fetching group data:", error);
-    }
-    return 0;
+async function LoadGameStats() {
+  try {
+    const data = await FetchJsonWithRetry(JsonUrl);
+    const games = Array.isArray(data?.games) ? data.games : [];
+
+    const TotalPlayers = games.reduce((sum, g) => sum + (Number(g.playing) || 0), 0);
+    const TotalVisits  = games.reduce((sum, g) => sum + (Number(g.visits)  || 0), 0);
+
+    const ValidRatings = games
+      .map(g => Number(g.likeRatio))
+      .filter(v => Number.isFinite(v) && v >= 0);
+
+    const AverageRating = ValidRatings.length
+      ? Math.round(ValidRatings.reduce((s, v) => s + v, 0) / ValidRatings.length)
+      : 0;
+
+    InitializeCountUp(games.length);
+    UpdateCountDisplays(TotalPlayers, TotalVisits, AverageRating);
+
+    const heroGamesEl = document.getElementById("hero-games");
+    if (heroGamesEl) heroGamesEl.textContent = `${games.length}+`;
+  } catch (error) {
+    console.error("Error loading game stats:", error);
+  }
 }
 
-let playerCountDisplay = new CountUp("player-count", 0, { duration: 2, separator: "," });
-let visitsCountDisplay = new CountUp("visits-count", 0, { duration: 2, separator: "," });
-let gamesCreatedDisplay = new CountUp("games-created", gameIds.length, { duration: 2, separator: ",", suffix: "+" });
-let groupMembersDisplay = new CountUp("group-members", 0, { duration: 2, separator: ",",  suffix: "+"});
+let HasLoadedStats = false;
+const StatsSection = document.getElementById("stats");
 
-async function getTotalData() {
-    let totalPlayers = 0;
-    let totalVisits = 0;
-    let allGroupMembers = 0;
-
-    let allGameData = await Promise.all(gameIds.map(id => getGameData(id)));
-    for (let game of allGameData) {
-        totalPlayers += game.playing;
-        totalVisits += game.visits;
-    }
-
-    let allGroupData = await Promise.all(groupIds.map(id => getGroupMembers(id)));
-    for (let members of allGroupData) {
-        allGroupMembers += members;
-    }
-
-    playerCountDisplay.update(totalPlayers);
-    visitsCountDisplay.update(totalVisits);
-    groupMembersDisplay.update(allGroupMembers);
-    gamesCreatedDisplay.update(gameIds.length);
+function TriggerLoad() {
+  if (HasLoadedStats) return;
+  HasLoadedStats = true;
+  LoadGameStats();
 }
 
-let hasLoadedStats = false;
-
-const statsSection = document.getElementById("stats");
-const observer = new IntersectionObserver((entries, observer) => {
+if (StatsSection && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries, ob) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting && !hasLoadedStats) {
-            hasLoadedStats = true;
-            getTotalData();
-            observer.unobserve(statsSection);
-        }
+      if (entry.isIntersecting) {
+        TriggerLoad();
+        ob.unobserve(StatsSection);
+      }
     });
-}, {
-    threshold: 0.4
-});
-
-observer.observe(statsSection);
+  }, { threshold: 0.4 });
+  observer.observe(StatsSection);
+} else {
+  TriggerLoad();
+}
