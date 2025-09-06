@@ -2,35 +2,11 @@ import { CountUp } from "/src/js/countup.js";
 
 const JsonUrl = "https://raw.githubusercontent.com/wernisch/mati-games-stats/main/public/games.json";
 
+let Totals = { GamesCount: 0, TotalPlayers: 0, TotalVisits: 0, AverageRating: 0 };
+let TotalsPromise = null;
+
 let PlayerCountDisplay, VisitsCountDisplay, GamesCreatedDisplay, AverageRatingDisplay;
-
-function InitializeCountUp(GamesCreated) {
-  PlayerCountDisplay = new CountUp("player-count", 0, { duration: 2, separator: "," });
-  VisitsCountDisplay = new CountUp("visits-count", 0, { duration: 2, separator: "," });
-  GamesCreatedDisplay = new CountUp("games-created", 0, { duration: 2, separator: ",", suffix: "+" });
-  AverageRatingDisplay = new CountUp("average-rating", 0, { duration: 1, decimalPlaces: 0, suffix: "%" });
-
-  PlayerCountDisplay.start();
-  VisitsCountDisplay.start();
-  GamesCreatedDisplay.start();
-  AverageRatingDisplay.start();
-
-  GamesCreatedDisplay.update(GamesCreated);
-}
-
-function UpdateCountDisplays(PlayerCount, VisitsCount, AvgRating) {
-  PlayerCountDisplay?.update(PlayerCount);
-  VisitsCountDisplay?.update(VisitsCount);
-  AverageRatingDisplay?.update(AvgRating);
-
-  const heroGamesEl = document.getElementById("hero-games");
-  const heroPlayersEl = document.getElementById("hero-players");
-  const heroRatingEl = document.getElementById("hero-rating");
-
-  if (heroGamesEl)   heroGamesEl.textContent = `${GamesCreatedDisplay ? "" : ""}${GamesCreatedDisplay ? "" : ""}`; // no-op; set below
-  if (heroPlayersEl) heroPlayersEl.textContent = PlayerCount.toLocaleString();
-  if (heroRatingEl)  heroRatingEl.textContent = `${AvgRating}%`;
-}
+let GridInitialized = false;
 
 async function FetchJsonWithRetry(url, retries = 3, delayMs = 600) {
   for (let attempt = 0; attempt <= retries; attempt++) {
@@ -45,8 +21,9 @@ async function FetchJsonWithRetry(url, retries = 3, delayMs = 600) {
   }
 }
 
-async function LoadGameStats() {
-  try {
+async function LoadTotalsOnce() {
+  if (TotalsPromise) return TotalsPromise;
+  TotalsPromise = (async () => {
     const data = await FetchJsonWithRetry(JsonUrl);
     const games = Array.isArray(data?.games) ? data.games : [];
 
@@ -61,35 +38,77 @@ async function LoadGameStats() {
       ? Math.round(ValidRatings.reduce((s, v) => s + v, 0) / ValidRatings.length)
       : 0;
 
-    InitializeCountUp(games.length);
-    UpdateCountDisplays(TotalPlayers, TotalVisits, AverageRating);
-
-    const heroGamesEl = document.getElementById("hero-games");
-    if (heroGamesEl) heroGamesEl.textContent = `${games.length}+`;
-  } catch (error) {
-    console.error("Error loading game stats:", error);
-  }
+    Totals = {
+      GamesCount: games.length,
+      TotalPlayers,
+      TotalVisits,
+      AverageRating
+    };
+    return Totals;
+  })();
+  return TotalsPromise;
 }
 
-let HasLoadedStats = false;
+function RenderHero(t) {
+  const heroGamesEl   = document.getElementById("hero-games");
+  const heroPlayersEl = document.getElementById("hero-players");
+  const heroRatingEl  = document.getElementById("hero-rating");
+
+  if (heroGamesEl)   heroGamesEl.textContent   = `${t.GamesCount}+`;
+  if (heroPlayersEl) heroPlayersEl.textContent = t.TotalPlayers.toLocaleString();
+  if (heroRatingEl)  heroRatingEl.textContent  = `${t.AverageRating}%`;
+}
+
+function InitializeCountUp(GamesCreated) {
+  if (GridInitialized) return;
+  GridInitialized = true;
+
+  PlayerCountDisplay   = new CountUp("player-count", 0, { duration: 2, separator: "," });
+  VisitsCountDisplay   = new CountUp("visits-count", 0, { duration: 2, separator: "," });
+  GamesCreatedDisplay  = new CountUp("games-created", 0, { duration: 2, separator: ",", suffix: "+" });
+  AverageRatingDisplay = new CountUp("average-rating", 0, { duration: 1, decimalPlaces: 0, suffix: "%" });
+
+  PlayerCountDisplay.start();
+  VisitsCountDisplay.start();
+  GamesCreatedDisplay.start();
+  AverageRatingDisplay.start();
+
+  GamesCreatedDisplay.update(GamesCreated);
+}
+
+function RenderGrid(t) {
+  InitializeCountUp(t.GamesCount);
+  PlayerCountDisplay?.update(t.TotalPlayers);
+  VisitsCountDisplay?.update(t.TotalVisits);
+  AverageRatingDisplay?.update(t.AverageRating);
+}
+
+LoadTotalsOnce()
+  .then(RenderHero)
+  .catch(err => console.error("Error loading hero stats:", err));
+
+let HasLoadedGrid = false;
 const StatsSection = document.getElementById("stats");
 
-function TriggerLoad() {
-  if (HasLoadedStats) return;
-  HasLoadedStats = true;
-  LoadGameStats();
+function TriggerGridLoad() {
+  if (HasLoadedGrid) return;
+  HasLoadedGrid = true;
+  LoadTotalsOnce()
+    .then(RenderGrid)
+    .catch(err => console.error("Error loading grid stats:", err));
 }
 
 if (StatsSection && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries, ob) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        TriggerLoad();
+        TriggerGridLoad();
         ob.unobserve(StatsSection);
       }
     });
   }, { threshold: 0.4 });
   observer.observe(StatsSection);
 } else {
-  TriggerLoad();
+
+  TriggerGridLoad();
 }
