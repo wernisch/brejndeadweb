@@ -8,119 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/src/logo.png" />
-    <style>
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Space Grotesk', sans-serif
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: Rajdhani, sans-serif
-        }
-
-        .hero-heading {
-            font-family: Orbitron, sans-serif
-        }
-
-        .stats-box p {
-            font-family: 'Share Tech Mono', monospace
-        }
-
-        .glass-bg {
-            background: linear-gradient(135deg, rgb(255 255 255 / .05) 0, rgb(255 255 255 / .02) 100%);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: 0 4px 30px rgb(0 0 0 / .5);
-            border: 1px solid rgb(255 255 255 / .2)
-        }
-
-        ::selection {
-            background: #fff;
-            color: #000
-        }
-
-        .bg-white ::selection {
-            background: #000;
-            color: #fff
-        }
-
-        .glass-bg ::selection {
-            background: rgb(255 255 255 / .2);
-            color: #fff
-        }
-
-        header ::selection {
-            background: #fff;
-            color: #000
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-                transform: translateY(20px)
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0)
-            }
-        }
-
-        .animate-fade-in {
-            animation: 1s ease-out forwards fade-in
-        }
-
-        .clipped {
-            clip-path: polygon(12px 0%, 100% 0%, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%, 0% 12px);
-        }
-
-        .hero-grid {
-            background-image:
-                radial-gradient(60rem 30rem at 20% 10%, rgba(59, 130, 246, .20) 0%, transparent 60%),
-                radial-gradient(60rem 40rem at 80% 30%, rgba(147, 197, 253, .16) 0%, transparent 65%),
-                linear-gradient(to bottom right, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
-            position: relative;
-        }
-
-        .hero-grid::before {
-
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px) 0 0/48px 48px,
-                linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px) 0 0/48px 48px;
-            mask-image: radial-gradient(ellipse at 50% 50%, black 55%, transparent 75%);
-            opacity: .25;
-            animation: grid-shift 30s linear infinite;
-        }
-
-        @keyframes grid-shift {
-            0% {
-                transform: translateY(0)
-            }
-
-            100% {
-                transform: translateY(-48px)
-            }
-        }
-
-        .glow-ring {
-            background: conic-gradient(from 180deg, rgba(59, 130, 246, .8), rgba(147, 197, 253, .8), rgba(59, 130, 246, .8));
-            filter: blur(24px);
-            opacity: .25;
-        }
-
-        .hero-divider {
-            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500&display=swap"
         rel="stylesheet">
@@ -130,11 +18,11 @@
     <header class="fixed w-full top-0 z-50 bg-black/70 backdrop-blur-lg shadow-lg">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
             <h1 class="text-2xl font-bold tracking-wider text-white hover:text-gray-300 transition"
-                style="font-family: 'Orbitron', sans-serif;">
+                style="font-family:'Orbitron',sans-serif;">
                 Brejndead
             </h1>
             <nav class="space-x-6 hidden md:flex items-center text-sm uppercase tracking-wider"
-                style="font-family: 'Orbitron', sans-serif;">
+                style="font-family:'Orbitron',sans-serif;">
                 <a href="#about" class="relative group text-white hover:text-white transition duration-300">
                     <span class="pb-1 group-hover:text-white">About</span>
                     <span
@@ -157,53 +45,55 @@
         <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70">
         </div>
 
-        <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full glow-ring"></div>
-        <div class="absolute bottom-[-6rem] right-[-6rem] w-[28rem] h-[28rem] rounded-full glow-ring"></div>
+        <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full glow-ring parallax" data-depth="26"></div>
+        <div class="absolute bottom-[-6rem] right-[-6rem] w-[28rem] h-[28rem] rounded-full glow-ring parallax"
+            data-depth="18"></div>
 
         <div class="relative z-10 w-full px-6">
-            <div class="max-w-5xl mx-auto glass-bg p-8 md:p-14 border-white/10">
+            <div class="max-w-5xl mx-auto glass-bg p-8 md:p-14 border-white/10 reveal" data-delay="100">
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs uppercase tracking-widest mb-6">
-                    <span class="h-2 w-2 rounded-full bg-white animate-pulse"></span>
+                    <span class="h-2 w-2 rounded-full bg-white animate-pulse pulse-dot"></span>
                     Available for projects
                 </div>
 
-                <h2 class="hero-heading text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+                <h2 class="hero-heading text-4xl sm:text-5xl md:text-7xl font-bold leading-tight reveal"
+                    data-delay="200">
                     Roblox Scripter <span class="opacity-60">&</span> Web Developer
                 </h2>
 
-                <p class="text-gray-300 mt-4 md:mt-5 text-base md:text-lg max-w-2xl">
+                <p class="text-gray-300 mt-4 md:mt-5 text-base md:text-lg max-w-2xl reveal" data-delay="300">
                     I build fast, clean gameplay systems and sleek web tools for Roblox studios.
                 </p>
 
-                <div class="mt-8 flex flex-col sm:flex-row items-center gap-4">
+                <div class="mt-8 flex flex-col sm:flex-row items-center gap-4 reveal" data-delay="400">
                     <a href="#projects"
-                        class="inline-flex items-center justify-center rounded-xl px-6 py-3 bg-white text-black font-semibold tracking-wide uppercase hover:scale-[1.02] active:scale-[.99] transition">
+                        class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-black font-semibold tracking-wide uppercase hover:scale-[1.02] active:scale-[.99] transition btn-shine">
                         View Projects
                         <svg class="ml-2 h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </a>
                     <a href="https://discord.com/users/222446629117100033" target="_blank"
-                        class="inline-flex items-center justify-center rounded-xl px-6 py-3 bg-transparent border border-white/30 hover:border-white/60 text-white font-semibold tracking-wide uppercase backdrop-blur transition">
+                        class="inline-flex items-center justify-center rounded-xl px-6 py-3 bg-transparent border border-white/30 hover:border-white/60 text-white font-semibold tracking-wide uppercase backdrop-blur transition hover-float">
                         Contact
                     </a>
                 </div>
 
                 <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                    <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+                    <div class="bg-white/5 border border-white/10 rounded-lg p-4 reveal" data-delay="100">
                         <p class="text-xs uppercase tracking-widest text-gray-400">Experience</p>
                         <p class="text-lg md:text-xl font-bold mt-1">10+ yrs</p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+                    <div class="bg-white/5 border border-white/10 rounded-lg p-4 reveal" data-delay="150">
                         <p class="text-xs uppercase tracking-widest text-gray-400">Games</p>
                         <p class="text-lg md:text-xl font-bold mt-1"><span id="hero-games">15+</span></p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+                    <div class="bg-white/5 border border-white/10 rounded-lg p-4 reveal" data-delay="200">
                         <p class="text-xs uppercase tracking-widest text-gray-400">Players</p>
                         <p class="text-lg md:text-xl font-bold mt-1"><span id="hero-players">0</span></p>
                     </div>
-                    <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+                    <div class="bg-white/5 border border-white/10 rounded-lg p-4 reveal" data-delay="250">
                         <p class="text-xs uppercase tracking-widest text-gray-400">Avg. Rating</p>
                         <p class="text-lg md:text-xl font-bold mt-1"><span id="hero-rating">0%</span></p>
                     </div>
@@ -222,148 +112,165 @@
             </svg>
         </a>
     </section>
-    <section class="max-w-6xl mx-auto px-6 py-24" id="about" data-aos="fade-up">
-        <h3 class="text-4xl font-bold mb-8">About Me</h3>
-        <p class="text-gray-400 leading-relaxed text-lg">
+
+    <section class="max-w-6xl mx-auto px-6 py-24" id="about">
+        <h3 class="text-4xl font-bold mb-8 reveal">About Me</h3>
+        <p class="text-gray-400 leading-relaxed text-lg reveal" data-delay="100">
             I'm a passionate Roblox scripter and web developer who loves crafting sleek websites, creating intuitive
             user experiences, and building beautiful digital products for Roblox game studios. Let's create something
             amazing together.
         </p>
     </section>
 
-    <section class="bg-white text-black py-24" id="projects" data-aos="fade-up">
+    <section class="bg-white text-black py-24" id="projects">
         <div class="max-w-6xl mx-auto px-6">
-            <h3 class="text-4xl font-bold mb-12">Projects</h3>
+            <h3 class="text-4xl font-bold mb-12 reveal">Projects</h3>
 
-            <h4 class="text-2xl font-semibold mb-6">Games</h4>
+            <h4 class="text-2xl font-semibold mb-6 reveal" data-delay="100">Games</h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div class="flex flex-col items-center">
-                    <img src="/src/img/parkourRushBanner.png" alt="Game 1" class="rounded-xl mb-4 shadow-lg">
-                    <a target="_blank" href="https://www.roblox.com/games/75917364083659/UPD-Parkour-Rush"
-                        class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
-                        style="font-family: 'Orbitron', sans-serif;">Parkour Rush</a>
+                <div class="flex flex-col items-center tilt hover-float rounded-xl">
+                    <div class="reveal flex flex-col items-center" data-delay="0">
+                        <img src="/src/img/ParkourObby.webp" alt="Game 1" class="rounded-xl mb-4 shadow-lg">
+                        <a target="_blank" href="https://www.roblox.com/games/95145490867665/Parkour-Obby-W7"
+                            class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
+                            style="font-family:'Orbitron',sans-serif;">Parkour Obby</a>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <img src="/src/img/FindtheDucks2.png" alt="Game 2" class="rounded-xl mb-4 shadow-lg">
-                    <a target="_blank" href="https://www.roblox.com/games/110729496024718/Find-the-Ducks-2"
-                        class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
-                        style="font-family: 'Orbitron', sans-serif;">Find the Ducks</a>
+                <div class="flex flex-col items-center tilt hover-float rounded-xl">
+                    <div class="reveal flex flex-col items-center" data-delay="100">
+                        <img src="/src/img/FindtheDucks2.png" alt="Game 2" class="rounded-xl mb-4 shadow-lg">
+                        <a target="_blank" href="https://www.roblox.com/games/110729496024718/Find-the-Ducks-2"
+                            class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
+                            style="font-family:'Orbitron',sans-serif;">Find the Ducks</a>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center">
-                    <img src="/src/img/SquidGames.png" alt="Game 3" class="rounded-xl mb-4 shadow-lg">
-                    <a target="_blank" href="https://www.roblox.com/games/7585576110/Squid-Game"
-                        class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
-                        style="font-family: 'Orbitron', sans-serif;">Squid Game</a>
+                <div class="flex flex-col items-center tilt hover-float rounded-xl">
+                    <div class="reveal flex flex-col items-center" data-delay="200">
+                        <img src="/src/img/SquidGames.png" alt="Game 3" class="rounded-xl mb-4 shadow-lg">
+                        <a target="_blank" href="https://www.roblox.com/games/7585576110/Squid-Game-S3"
+                            class="text-black bg-white text-lg font-bold tracking-wide uppercase px-4 py-1 transition-all duration-150 hover:bg-black hover:text-white"
+                            style="font-family:'Orbitron',sans-serif;">Squid Games</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="text-center mb-8">
+            <div class="text-center mb-8 reveal">
                 <p class="text-gray-600">and many more...</p>
             </div>
 
             <div id="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
-                    style="font-family: 'Share Tech Mono', monospace;">
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono reveal"
+                    data-delay="0" style="font-family:'Share Tech Mono',monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Active Players</p>
-                    <p id="player-count" class="text-2xl mt-2 font-bold text-white">0</p>
+                    <p id="player-count" class="text-2xl mt-2 font-bold text-white" data-count-to="1234">0</p>
                 </div>
-                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
-                    style="font-family: 'Share Tech Mono', monospace;">
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono reveal"
+                    data-delay="100" style="font-family:'Share Tech Mono',monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Total Visits</p>
-                    <p id="visits-count" class="text-2xl mt-2 font-bold text-white">0</p>
+                    <p id="visits-count" class="text-2xl mt-2 font-bold text-white" data-count-to="2500000">0</p>
                 </div>
-                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
-                    style="font-family: 'Share Tech Mono', monospace;">
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono reveal"
+                    data-delay="200" style="font-family:'Share Tech Mono',monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Average Rating</p>
-                    <p id="average-rating" class="text-2xl mt-2 font-bold text-white">0%</p>
+                    <p id="average-rating" class="text-2xl mt-2 font-bold text-white" data-count-to="92">0%</p>
                 </div>
-                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono"
-                    style="font-family: 'Share Tech Mono', monospace;">
+                <div class="bg-black text-white p-4 clipped text-center shadow-lg text-sm font-mono reveal"
+                    data-delay="300" style="font-family:'Share Tech Mono',monospace;">
                     <p class="uppercase tracking-wide text-gray-400 text-xs">Total Games</p>
-                    <p id="games-created" class="text-2xl mt-2 font-bold text-white">0</p>
+                    <p id="games-created" class="text-2xl mt-2 font-bold text-white" data-count-to="27">0</p>
                 </div>
             </div>
 
-
-            <h4 class="text-2xl font-semibold mb-6">Websites</h4>
+            <h4 class="text-2xl font-semibold mb-6 reveal" data-delay="100">Websites</h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div
-                    class="border border-black rounded-xl p-6 flex flex-col items-center hover:scale-[1.03] transition-transform duration-300 bg-white">
-                    <img src="/src/img/MouseclickStudio.png" alt="Mouseclick Studio" class="rounded-lg mb-4 shadow">
-                    <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
-                        style="font-family: 'Orbitron', sans-serif;">
-                        mouseclick.games
-                    </p>
-                    <a href="https://mouseclick.games" target="_blank"
-                        class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
-                        Visit
-                    </a>
+                <div class="flex flex-col items-center tilt hover-float rounded-xl">
+                    <div class="reveal flex flex-col items-center rounded-xl p-6 bg-white w-full" data-delay="100">
+                        <img src="/src/img/MatiGamesV2.jpg" alt="MatiGames Studio" class="rounded-lg mb-4 shadow">
+                        <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
+                            style="font-family:'Orbitron',sans-serif;">
+                            matigames.com
+                        </p>
+                        <a href="https://matigames.com" target="_blank"
+                            class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
+                            Visit
+                        </a>
+                    </div>
                 </div>
 
-                <div
-                    class="border border-black rounded-xl p-6 flex flex-col items-center hover:scale-[1.03] transition-transform duration-300 bg-white">
-                    <img src="/src/img/MatiGamesStudio.png" alt="MatiGames Studio" class="rounded-lg mb-4 shadow">
-                    <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
-                        style="font-family: 'Orbitron', sans-serif;">
-                        matigames.com
-                    </p>
-                    <a href="https://matigames.com" target="_blank"
-                        class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
-                        Visit
-                    </a>
+                <div class="flex flex-col items-center tilt hover-float rounded-xl">
+                    <div class="reveal flex flex-col items-center rounded-xl p-6 bg-white w-full" data-delay="200">
+                        <img src="/src/img/ManfaceGames.jpg" alt="FlorizGames Studio" class="rounded-lg mb-4 shadow">
+                        <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
+                            style="font-family:'Orbitron',sans-serif;">
+                            manface.games
+                        </p>
+                        <a href="https://florizgames.com" target="_blank"
+                            class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
+                            Visit
+                        </a>
+                    </div>
                 </div>
 
-                <div
-                    class="border border-black rounded-xl p-6 flex flex-col items-center hover:scale-[1.03] transition-transform duration-300 bg-white">
-                    <img src="/src/img/FlorizWIP.png" alt="FlorizGames Studio" class="rounded-lg mb-4 shadow">
-                    <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
-                        style="font-family: 'Orbitron', sans-serif;">
-                        florizgames.com
-                    </p>
-                    <a href="https://florizgames.com" target="_blank"
-                        class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
-                        Visit
-                    </a>
+                <div class="flex flex-col items-center tilt hover-float rounded-xl">
+                    <div class="reveal flex flex-col items-center rounded-xl p-6 bg-white w-full" data-delay="0">
+                        <img src="/src/img/MouseclickStudio.png" alt="Mouseclick Studio" class="rounded-lg mb-4 shadow">
+                        <p class="text-black text-lg font-bold tracking-wide uppercase mb-3"
+                            style="font-family:'Orbitron',sans-serif;">
+                            mouseclick.games
+                        </p>
+                        <a href="https://mouseclick.games" target="_blank"
+                            class="bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
+                            Visit
+                        </a>
+                    </div>
                 </div>
             </div>
 
+            <div class="text-center mt-10 reveal" data-delay="300">
+                <a href="/websites"
+                    class="inline-block bg-black text-white px-6 py-3 rounded-md hover:bg-gray-900 transition-all duration-300 font-semibold tracking-wider uppercase text-sm hover-float">
+                    View All Sites
+                </a>
+            </div>
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 py-24" id="pricing" data-aos="fade-up">
-        <h3 class="text-4xl font-bold mb-12">Pricing</h3>
+    <section class="max-w-6xl mx-auto px-6 py-24" id="pricing">
+        <h3 class="text-4xl font-bold mb-12 reveal">Pricing</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div
-                class="bg-black text-white p-8 rounded-2xl shadow-lg flex flex-col items-center hover:scale-105 transition">
+            <div class="bg-black text-white p-8 rounded-2xl shadow-lg flex flex-col items-center hover:scale-105 transition reveal"
+                data-delay="100">
                 <h4 class="text-2xl font-bold mb-4">Scripting</h4>
                 <p class="text-gray-400 mb-6">Roblox Lua scripting, systems, game mechanics, tools, and more.</p>
                 <p class="text-3xl font-bold mb-2">$25–$45/hour</p>
                 <p class="text-gray-400 text-sm">≈ 7,150–12,850 Robux/hour</p>
             </div>
-            <div
-                class="bg-white text-black p-8 rounded-2xl shadow-lg flex flex-col items-center hover:scale-105 transition">
+            <div class="bg-white text-black p-8 rounded-2xl shadow-lg flex flex-col items-center hover:scale-105 transition reveal"
+                data-delay="200">
                 <h4 class="text-2xl font-bold mb-4">Web Development</h4>
-                <p class="text-gray-600 mb-6">Custom websites, Roblox API integrations, and more.</p>
-                <p class="text-3xl font-bold mb-2">$35–$55/hour</p>
-                <p class="text-gray-400 text-sm">≈ 10,000–15,750 Robux/hour</p>
+                <p class="text-gray-600 mb-6">Custom websites, Roblox API integrations, Cloudflare proxy, Github worker,
+                    and more.</p>
+                <p class="text-3xl font-bold mb-2">$500</p>
+                <p class="text-gray-400 text-sm">≈ 131,578 Robux</p>
             </div>
         </div>
     </section>
 
-
-    <section class="bg-white text-black py-24" id="contact" data-aos="fade-up">
+    <section class="bg-white text-black py-24" id="contact">
         <div class="max-w-6xl mx-auto px-6">
-            <h3 class="text-4xl font-bold mb-8">Contact</h3>
-            <p class="text-gray-600 mb-8">Feel free to reach out for collaborations or just a friendly hello 👋</p>
+            <h3 class="text-4xl font-bold mb-8 reveal">Contact</h3>
+            <p class="text-gray-600 mb-8 reveal" data-delay="100">Feel free to reach out for collaborations or just a
+                hello!</p>
             <a href="https://discord.com/users/222446629117100033" target="_blank"
-                class="inline-block border border-black px-6 py-3 rounded-full hover:bg-black hover:text-white transition">
+                class="inline-block border border-black px-6 py-3 rounded-full hover:bg-black hover:text-white transition hover-float reveal"
+                data-delay="200">
                 Message Me
             </a>
         </div>
     </section>
 
-    <footer class="text-center text-sm p-8 bg-black text-white" data-aos="fade-up">
-        <div class="flex justify-center gap-4 flex-wrap">
+    <footer class="text-center text-sm p-8 bg-black text-white">
+        <div class="flex justify-center gap-4 flex-wrap reveal">
             <a href="https://www.youtube.com/@Brejndead" target="_blank"
                 class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition-all duration-300 font-medium tracking-wider uppercase text-sm">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -393,15 +300,9 @@
         </div>
     </footer>
 
+    <script src="src/js/animate.js"></script>
+
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-    <script type="module">
-        import { gameIds } from "https://matigames.com/ids.js";
-
-        window.gameIds = gameIds;
-        window.groupIds = [34806351, 33520712, 10431859, 10235287, 8283107, 35286510, 35667253, 35742480, 34070796, 35707907, 10170332, 35749225];
-    </script>
-
     <script type="module" src="/src/js/stats.js"></script>
     <script>
         AOS.init({
