@@ -7,27 +7,27 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+    background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 8px;
-  border: 2px solid #1a1a1a;
+    background: #444;
+    border-radius: 8px;
+    border: 2px solid #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #666;
+    background: #666;
 }
 
 * {
-  scrollbar-width: thin;
-  scrollbar-color: #444 #1a1a1a;
+    scrollbar-width: thin;
+    scrollbar-color: #444 #1a1a1a;
 }
 
 h1,
@@ -233,5 +233,197 @@ header ::selection {
 }
 
 
-.tilt { will-change: transform; transform-style: preserve-3d; }
-.tilt > * { transform: translateZ(40px); }
+.tilt {
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+.tilt>* {
+    transform: translateZ(40px);
+}
+
+
+
+:root {
+    --bg: #050507;
+    --muted: #9ca3af
+}
+
+html,
+body {
+    scroll-behavior: smooth
+}
+
+body {
+    font-family: "Space Grotesk", system-ui, Segoe UI, Arial, sans-serif;
+    background: radial-gradient(1200px 800px at 20% -10%, #1f2937 0%, transparent 60%), radial-gradient(900px 600px at 120% 20%, #0ea5e9 0%, transparent 55%), linear-gradient(180deg, #000 0%, #050507 60%, #000 100%);
+    background-attachment: fixed
+}
+
+.brand {
+    font-family: "Orbitron", sans-serif
+}
+
+.mono {
+    font-family: "Share Tech Mono", monospace
+}
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    border-radius: 1rem;
+    padding: 0.95rem 1.35rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: transform .2s cubic-bezier(.2, .8, .2, 1), box-shadow .25s ease, opacity .2s ease, background .2s ease
+}
+
+.btn:active {
+    transform: translateY(1px) scale(.98)
+}
+
+.btn-primary {
+    color: #000;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, .18), inset 0 0 0 1px rgba(0, 0, 0, .06)
+}
+
+.btn-primary .icon {
+    transition: transform .25s ease
+}
+
+.btn-primary:hover .icon {
+    transform: translateX(3px)
+}
+
+.btn-outline {
+    color: #ffffffc6;
+    border: 1px solid rgba(255, 255, 255, .35);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25)
+}
+
+.btn-outline:hover {
+    border-color: #ffffffa9;
+    background: rgba(255, 255, 255, .06)
+}
+
+.btn-bounce {
+    transform: translateY(0)
+}
+
+.btn-bounce:hover {
+    transform: translateY(-2px) scale(1.02)
+}
+
+.shine {
+    background: linear-gradient(110deg, rgba(255, 255, 255, .0) 0%, rgba(255, 255, 255, .4) 30%, rgba(255, 255, 255, 0) 60%) no-repeat;
+    background-size: 220% 220%;
+    animation: shine 3.5s linear infinite
+}
+
+@keyframes shine {
+    0% {
+        background-position: -120% 0
+    }
+
+    100% {
+        background-position: 220% 0
+    }
+}
+
+.glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+    border: 1px solid rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px)
+}
+
+.tag {
+    border: 1px solid rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .07)
+}
+
+.card {
+    border: 1px solid rgba(255, 255, 255, .12)
+}
+
+.hover-float {
+    transform: translateY(0);
+    transition: transform .25s ease, box-shadow .25s ease
+}
+
+.hover-float:hover {
+    transform: translateY(-6px)
+}
+
+.section {
+    scroll-margin-top: 96px
+}
+
+.img-soft {
+    filter: saturate(1.05) contrast(1.02)
+}
+
+.hero-bg {
+    background-image: url('/BG.png');
+    background-size: cover;
+    background-position: center;
+    opacity: .2;
+    mix-blend: screen;
+}
+
+.divider {
+    mask-image: linear-gradient(to top, black 30%, transparent 85%)
+}
+
+.nav-link {
+    position: relative
+}
+
+.nav-link:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width .25s ease
+}
+
+.nav-link:hover:after,
+.nav-link[aria-current="page"]:after {
+    width: 100%
+}
+
+.focus-visible:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px
+}
+
+.scale-card {
+    transform: translateZ(0) scale(1);
+    transition: transform .25s cubic-bezier(.2, .8, .2, 1)
+}
+
+.group:hover .scale-card {
+    transform: translateZ(0) scale(1.05)
+}
+
+.tilt {
+    perspective: 1000px;
+}
+
+.tilt-inner {
+    transform-style: preserve-3d;
+    transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s ease, filter .25s ease;
+    will-change: transform;
+}
+
+.tilt:hover .tilt-inner {
+    filter: saturate(1.05) contrast(1.02);
+}
