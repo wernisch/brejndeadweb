@@ -400,11 +400,6 @@ body {
     width: 100%
 }
 
-.focus-visible:focus {
-    outline: 2px solid #fff;
-    outline-offset: 2px
-}
-
 .scale-card {
     transform: translateZ(0) scale(1);
     transition: transform .25s cubic-bezier(.2, .8, .2, 1)
