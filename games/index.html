@@ -1,40 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>All Games — Brejndead</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Games</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/png" href="/src/logo.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/src/logo.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Space+Grotesk:wght@400;500&display=swap"
+    rel="stylesheet">
   <style>
-    html{scroll-behavior:smooth}
-    body{font-family:'Space Grotesk',sans-serif}
-    h1,h2,h3,h4{font-family:Rajdhani,sans-serif}
-    .glass-bg{background:linear-gradient(135deg,rgba(0,0,0,.03),rgba(0,0,0,.01));backdrop-filter:blur(16px);border-radius:20px;border:1px solid rgba(0,0,0,.08)}
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.in{opacity:1;transform:translateY(0)}
-    .hover-float{transition:transform .25s ease, box-shadow .25s ease}
-    .hover-float:hover{transform:translateY(-6px);box-shadow:0 10px 24px rgba(0,0,0,.12)}
+    html {
+      scroll-behavior: smooth
+    }
 
-    .hover-float-no-shadow{transition:transform .25s ease}
-    .hover-float-no-shadow:hover{transform:translateY(-6px)}
+    body {
+      font-family: 'Space Grotesk', sans-serif
+    }
 
-    .tilt{will-change:transform;transform-style:preserve-3d}
-    .tilt>*{transform:translateZ(40px)}
-    .progress-bar{position:fixed;inset:0 auto auto 0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#000,rgba(0,0,0,.4))}
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:70}
-    .modal-open{display:flex}
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: Rajdhani, sans-serif
+    }
+
+    .glass-bg {
+      background: linear-gradient(135deg, rgba(0, 0, 0, .03), rgba(0, 0, 0, .01));
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, .08)
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .hover-float {
+      transition: transform .25s ease, box-shadow .25s ease
+    }
+
+    .hover-float:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .12)
+    }
+
+    .hover-float-no-shadow {
+      transition: transform .25s ease
+    }
+
+    .hover-float-no-shadow:hover {
+      transform: translateY(-6px)
+    }
+
+    .tilt {
+      will-change: transform;
+      transform-style: preserve-3d
+    }
+
+    .tilt>* {
+      transform: translateZ(40px)
+    }
+
+    .progress-bar {
+      position: fixed;
+      inset: 0 auto auto 0;
+      height: 3px;
+      width: 0;
+      z-index: 60;
+      background: linear-gradient(90deg, #000, rgba(0, 0, 0, .4))
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 70
+    }
+
+    .modal-open {
+      display: flex
+    }
   </style>
 </head>
+
 <body class="bg-white text-black">
   <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur border-b border-black/10">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-      <a href="/" class="text-2xl font-bold tracking-wider hover:opacity-80 transition" style="font-family:'Orbitron',sans-serif;">Brejndead</a>
-      <nav class="space-x-6 hidden md:flex items-center text-sm uppercase tracking-wider" style="font-family:'Orbitron',sans-serif;">
-        <a href="/#projects" class="relative group"><span class="pb-1">Projects</span><span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span></a>
-        <a href="/#about" class="relative group"><span class="pb-1">About</span><span class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span></a>
-        <a href="https://discord.com/users/222446629117100033" target="_blank" class="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-900 transition font-semibold">Contact</a>
+      <a href="/" class="text-2xl font-bold tracking-wider hover:opacity-80 transition"
+        style="font-family:'Orbitron',sans-serif;">Brejndead</a>
+      <nav class="space-x-6 hidden md:flex items-center text-sm uppercase tracking-wider"
+        style="font-family:'Orbitron',sans-serif;">
+        <a href="/#projects" class="relative group"><span class="pb-1">Projects</span><span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="/#about" class="relative group"><span class="pb-1">About</span><span
+            class="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span></a>
+        <a href="https://discord.com/users/222446629117100033" target="_blank"
+          class="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-900 transition font-semibold">Contact</a>
       </nav>
     </div>
   </header>
@@ -51,15 +124,18 @@
         <div class="w-full md:w-[28rem]">
           <label class="block text-sm text-black/60 mb-2 uppercase tracking-widest">Search</label>
           <div class="relative">
-            <input id="searchInput" type="text" placeholder="Search by name…" class="w-full rounded-xl bg-black/[.03] border border-black/10 text-black placeholder-black/40 px-4 py-3 pr-24 focus:outline-none focus:ring-2 focus:ring-black/10"/>
-            <button id="clearBtn" class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-xs uppercase tracking-wider bg-black/[.06] hover:bg-black/[.1] border border-black/10 rounded-md">Clear</button>
+            <input id="searchInput" type="text" placeholder="Search by name…"
+              class="w-full rounded-xl bg-black/[.03] border border-black/10 text-black placeholder-black/40 px-4 py-3 pr-24 focus:outline-none focus:ring-2 focus:ring-black/10" />
+            <button id="clearBtn"
+              class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-xs uppercase tracking-wider bg-black/[.06] hover:bg-black/[.1] border border-black/10 rounded-md">Clear</button>
           </div>
         </div>
       </div>
       <div class="mt-6 flex flex-wrap items-center gap-3">
         <span id="resultCount" class="text-sm text-black/60">0 results</span>
         <span class="mx-2 hidden md:inline text-black/10">|</span>
-        <div class="text-xs text-black/60">Press <kbd class="px-1.5 py-0.5 bg-black/[.06] rounded border border-black/10">/</kbd> to focus search</div>
+        <div class="text-xs text-black/60">Press <kbd
+            class="px-1.5 py-0.5 bg-black/[.06] rounded border border-black/10">/</kbd> to focus search</div>
       </div>
     </div>
   </section>
@@ -75,14 +151,17 @@
     <div class="bg-white rounded-2xl shadow-2xl w-[92vw] max-w-2xl overflow-hidden border border-black/10">
       <div class="relative">
         <img id="modalImg" src="" alt="" class="w-full h-56 object-cover">
-        <button id="modalClose" class="absolute top-3 right-3 bg-white/90 hover:bg-white text-black rounded-full h-9 w-9 flex items-center justify-center border border-black/10">&times;</button>
+        <button id="modalClose"
+          class="absolute top-3 right-3 bg-white/90 hover:bg-white text-black rounded-full h-9 w-9 flex items-center justify-center border border-black/10">&times;</button>
       </div>
       <div class="p-6">
         <h3 id="modalTitle" class="text-2xl font-bold mb-2" style="font-family:'Rajdhani',sans-serif;"></h3>
         <p id="modalDesc" class="text-black/70 leading-relaxed"></p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a id="modalPlay" href="#" target="_blank" class="inline-block bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition font-medium tracking-wider uppercase text-sm">Play</a>
-          <button id="modalClose2" class="inline-block px-5 py-2 rounded-md border border-black/10 hover:bg-black/[.04] transition font-medium tracking-wider uppercase text-sm">Close</button>
+          <a id="modalPlay" href="#" target="_blank"
+            class="inline-block bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition font-medium tracking-wider uppercase text-sm">Play</a>
+          <button id="modalClose2"
+            class="inline-block px-5 py-2 rounded-md border border-black/10 hover:bg-black/[.04] transition font-medium tracking-wider uppercase text-sm">Close</button>
         </div>
       </div>
     </div>
@@ -91,34 +170,36 @@
   <div class="progress-bar" id="progressBar"></div>
 
   <script>
-    const $=(q,c=document)=>c.querySelector(q);const $$=(q,c=document)=>Array.from(c.querySelectorAll(q));
-    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
-    (function(){const bar=$('#progressBar');const onScroll=()=>{const h=document.documentElement;const pct=(h.scrollTop)/(h.scrollHeight-h.clientHeight)*100;bar.style.width=pct+'%'};document.addEventListener('scroll',onScroll,{passive:true});onScroll()})();
-    function attachTilt(root){$$('.tilt',root||document).forEach(card=>{card.style.willChange='transform';card.style.transformStyle='preserve-3d';const max=10;const ease=.12;const scaleOnHover=1.02;let glare=card.querySelector('.tilt-glare');if(!glare){glare=document.createElement('div');glare.className='tilt-glare';Object.assign(glare.style,{position:'absolute',inset:'0',pointerEvents:'none',background:'radial-gradient(closest-side, rgba(0,0,0,.12), rgba(0,0,0,0) 60%)',opacity:'0',transition:'opacity .2s ease',borderRadius:'inherit'});if(getComputedStyle(card).position==='static')card.style.position='relative';card.appendChild(glare)}let hover=false;let targetRX=0,targetRY=0;let currRX=0,currRY=0;let rafId=null;const animate=()=>{currRX+=(targetRX-currRX)*ease;currRY+=(targetRY-currRY)*ease;card.style.transform=`perspective(900px) rotateX(${currRY}deg) rotateY(${currRX}deg) scale(${hover?scaleOnHover:1})`;if(hover||Math.abs(targetRX-currRX)>.02||Math.abs(targetRY-currRY)>.02){rafId=requestAnimationFrame(animate)}else{cancelAnimationFrame(rafId);rafId=null}};const onMove=e=>{const b=card.getBoundingClientRect();const x=e.clientX-b.left;const y=e.clientY-b.top;const px=(x/b.width-.5)*2;const py=(y/b.height-.5)*2;targetRX=px*max;targetRY=-py*max;glare.style.opacity='1';glare.style.background=`radial-gradient(200px 200px at ${x}px ${y}px, rgba(0,0,0,.12), rgba(0,0,0,0) 60%)`;if(!rafId)rafId=requestAnimationFrame(animate)};const onEnter=()=>{hover=true;if(!rafId)rafId=requestAnimationFrame(animate)};const onLeave=()=>{hover=false;targetRX=0;targetRY=0;glare.style.opacity='0';if(!rafId)rafId=requestAnimationFrame(animate)};card.addEventListener('mouseenter',onEnter);card.addEventListener('mousemove',onMove);card.addEventListener('mouseleave',onLeave)})}
-    const gridEl=$('#grid');const emptyEl=$('#emptyState');const countEl=$('#resultCount');const searchEl=$('#searchInput');const clearBtn=$('#clearBtn');
-    function cardTemplate(game,delay){const wrapper=document.createElement('div');wrapper.className='flex flex-col items-center tilt hover-float-no-shadow';wrapper.innerHTML=`<div class="reveal flex flex-col items-center rounded-xl overflow-hidden bg-black/[.03] border border-black/10 w-full"><img src="${game.img}" alt="${game.name}" class="w-full h-48 object-cover"><div class="p-4 w-full text-center"><p class="text-black text-lg font-bold tracking-wide uppercase mb-3" style="font-family:'Orbitron',sans-serif;">${game.name}</p><button data-id="${game.id}" class="inline-block bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm game-info-btn">Info</button></div></div>`;const inner=wrapper.firstElementChild;inner.dataset.delay=String(delay||0);io.observe(inner);return wrapper}
-    function render(list){gridEl.innerHTML='';if(!list.length){emptyEl.classList.remove('hidden');countEl.textContent='0 results';return}emptyEl.classList.add('hidden');countEl.textContent=`${list.length} ${list.length===1?'result':'results'}`;list.forEach((g,i)=>{const card=cardTemplate(g,(i%6)*50);gridEl.appendChild(card)});attachTilt(gridEl);$$('.game-info-btn',gridEl).forEach(btn=>btn.addEventListener('click',()=>openModal(btn.dataset.id)))}
-    function normalize(s){return(s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'')}
-    function filterGames(q){const nq=normalize(q);if(!nq)return GAMES.slice();return GAMES.filter(g=>normalize(g.name).includes(nq))}
-    function applySearch(){render(filterGames(searchEl.value))}
-    window.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==searchEl){e.preventDefault();searchEl.focus();searchEl.select()}})
-    searchEl.addEventListener('input',applySearch);clearBtn.addEventListener('click',()=>{searchEl.value='';applySearch();searchEl.focus()})
-    const modal=$('#modal');const modalImg=$('#modalImg');const modalTitle=$('#modalTitle');const modalDesc=$('#modalDesc');const modalPlay=$('#modalPlay');const modalClose=$('#modalClose');const modalClose2=$('#modalClose2');
-    function openModal(id){const g=GAMES.find(x=>String(x.id)===String(id));if(!g)return;modalImg.src=g.img;modalImg.alt=g.name;modalTitle.textContent=g.name;modalDesc.textContent=g.desc||'';modalPlay.href=g.url;modal.classList.add('modal-open')}
-    function closeModal(){modal.classList.remove('modal-open')}
-    modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});modalClose.addEventListener('click',closeModal);modalClose2.addEventListener('click',closeModal);window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()})
-    document.addEventListener('DOMContentLoaded',()=>{render(GAMES);$$('.reveal').forEach(el=>io.observe(el))})
-    const GAMES=[
-      {id:1,url:'https://www.roblox.com/games/95145490867665/Parkour-Obby-W7',name:'Parkour Obby',img:'/src/img/ParkourObby.webp',desc:'An obby with parkour mechanics scripted in my custom framework.'},
-      {id:2,url:'https://www.roblox.com/games/110729496024718/Find-the-Ducks-2',name:'Find the Ducks 2',img:'/src/img/FindtheDucks2.png',desc:'Chill duck finding game. It is not scripted really well.'},
-      {id:3,url:'https://www.roblox.com/games/7585576110/Squid-Game-S3',name:'Squid Game',img:'/src/img/SquidGames.png',desc:'Roblox squid game slop.'},
-      {id:4,url:'https://www.roblox.com/games/93143404496454/Protect-The-House-From-Brainrots',name:'Protect The House From Brainrots',img:'/src/img/ProtectTheHouseFromBrainrots.webp',desc:'A quick base defense game scipted in knit.'},
-      {id:5,url:'https://www.roblox.com/games/105228308854269/Break-Bones-Tower',name:'Break Bones Tower',img:'/src/img/BreakBones.webp',desc:'A tower obby game, where you break bones.'},
-      {id:6,url:'https://www.roblox.com/games/75917364083659/UPD-Parkour-Rush',name:'Parkour Rush',img:'/src/img/ParkourRush.webp',desc:'Predecessor to Parkour Obby. This one was never scripted too well, but has been made even buggier by new devs.'},
-      {id:7,url:'https://www.roblox.com/games/137934990603939/Boomerang-Battles',name:'Boomerang Battles',img:'/src/img/BoomerangBattles.webp',desc:'A game where you throw boomerangs to kill other players. I thought its fun, but it flopped.'},
-      {id:8,url:'https://www.roblox.com/games/116739501459923/Draw-Troll-Tower',name:'Draw Troll Tower',img:'/src/img/DrawTower.webp',desc:'A tower obby game, where you can also draw.'},
-      {id:9,url:'https://www.roblox.com/games/18984604254/Find-the-Ducks',name:'Find the Ducks',img:'/src/img/FindTheDucks.webp',desc:'Find the Ducks 1. This is my first game that was a success.'}
+    const $ = (q, c = document) => c.querySelector(q); const $$ = (q, c = document) => Array.from(c.querySelectorAll(q));
+    const io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in') }) }, { threshold: .15 });
+    (function () { const bar = $('#progressBar'); const onScroll = () => { const h = document.documentElement; const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100; bar.style.width = pct + '%' }; document.addEventListener('scroll', onScroll, { passive: true }); onScroll() })();
+    function attachTilt(root) { $$('.tilt', root || document).forEach(card => { card.style.willChange = 'transform'; card.style.transformStyle = 'preserve-3d'; const max = 10; const ease = .12; const scaleOnHover = 1.02; let glare = card.querySelector('.tilt-glare'); if (!glare) { glare = document.createElement('div'); glare.className = 'tilt-glare'; Object.assign(glare.style, { position: 'absolute', inset: '0', pointerEvents: 'none', background: 'radial-gradient(closest-side, rgba(0,0,0,.12), rgba(0,0,0,0) 60%)', opacity: '0', transition: 'opacity .2s ease', borderRadius: 'inherit' }); if (getComputedStyle(card).position === 'static') card.style.position = 'relative'; card.appendChild(glare) } let hover = false; let targetRX = 0, targetRY = 0; let currRX = 0, currRY = 0; let rafId = null; const animate = () => { currRX += (targetRX - currRX) * ease; currRY += (targetRY - currRY) * ease; card.style.transform = `perspective(900px) rotateX(${currRY}deg) rotateY(${currRX}deg) scale(${hover ? scaleOnHover : 1})`; if (hover || Math.abs(targetRX - currRX) > .02 || Math.abs(targetRY - currRY) > .02) { rafId = requestAnimationFrame(animate) } else { cancelAnimationFrame(rafId); rafId = null } }; const onMove = e => { const b = card.getBoundingClientRect(); const x = e.clientX - b.left; const y = e.clientY - b.top; const px = (x / b.width - .5) * 2; const py = (y / b.height - .5) * 2; targetRX = px * max; targetRY = -py * max; glare.style.opacity = '1'; glare.style.background = `radial-gradient(200px 200px at ${x}px ${y}px, rgba(0,0,0,.12), rgba(0,0,0,0) 60%)`; if (!rafId) rafId = requestAnimationFrame(animate) }; const onEnter = () => { hover = true; if (!rafId) rafId = requestAnimationFrame(animate) }; const onLeave = () => { hover = false; targetRX = 0; targetRY = 0; glare.style.opacity = '0'; if (!rafId) rafId = requestAnimationFrame(animate) }; card.addEventListener('mouseenter', onEnter); card.addEventListener('mousemove', onMove); card.addEventListener('mouseleave', onLeave) }) }
+    const gridEl = $('#grid'); const emptyEl = $('#emptyState'); const countEl = $('#resultCount'); const searchEl = $('#searchInput'); const clearBtn = $('#clearBtn');
+    function cardTemplate(game, delay) { const wrapper = document.createElement('div'); wrapper.className = 'flex flex-col items-center tilt hover-float-no-shadow'; wrapper.innerHTML = `<div class="reveal flex flex-col items-center rounded-xl overflow-hidden bg-black/[.03] border border-black/10 w-full"><img src="${game.img}" alt="${game.name}" class="w-full h-48 object-cover"><div class="p-4 w-full text-center"><p class="text-black text-lg font-bold tracking-wide uppercase mb-3" style="font-family:'Orbitron',sans-serif;">${game.name}</p><button data-id="${game.id}" class="inline-block bg-black text-white px-5 py-2 rounded-md hover:bg-gray-900 transition-all duration-300 font-medium tracking-wider uppercase text-sm game-info-btn">Info</button></div></div>`; const inner = wrapper.firstElementChild; inner.dataset.delay = String(delay || 0); io.observe(inner); return wrapper }
+    function render(list) { gridEl.innerHTML = ''; if (!list.length) { emptyEl.classList.remove('hidden'); countEl.textContent = '0 results'; return } emptyEl.classList.add('hidden'); countEl.textContent = `${list.length} ${list.length === 1 ? 'result' : 'results'}`; list.forEach((g, i) => { const card = cardTemplate(g, (i % 6) * 50); gridEl.appendChild(card) }); attachTilt(gridEl); $$('.game-info-btn', gridEl).forEach(btn => btn.addEventListener('click', () => openModal(btn.dataset.id))) }
+    function normalize(s) { return (s || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '') }
+    function filterGames(q) { const nq = normalize(q); if (!nq) return GAMES.slice(); return GAMES.filter(g => normalize(g.name).includes(nq)) }
+    function applySearch() { render(filterGames(searchEl.value)) }
+    window.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement !== searchEl) { e.preventDefault(); searchEl.focus(); searchEl.select() } })
+    searchEl.addEventListener('input', applySearch); clearBtn.addEventListener('click', () => { searchEl.value = ''; applySearch(); searchEl.focus() })
+    const modal = $('#modal'); const modalImg = $('#modalImg'); const modalTitle = $('#modalTitle'); const modalDesc = $('#modalDesc'); const modalPlay = $('#modalPlay'); const modalClose = $('#modalClose'); const modalClose2 = $('#modalClose2');
+    function openModal(id) { const g = GAMES.find(x => String(x.id) === String(id)); if (!g) return; modalImg.src = g.img; modalImg.alt = g.name; modalTitle.textContent = g.name; modalDesc.textContent = g.desc || ''; modalPlay.href = g.url; modal.classList.add('modal-open') }
+    function closeModal() { modal.classList.remove('modal-open') }
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal() }); modalClose.addEventListener('click', closeModal); modalClose2.addEventListener('click', closeModal); window.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal() })
+    document.addEventListener('DOMContentLoaded', () => { render(GAMES); $$('.reveal').forEach(el => io.observe(el)) })
+    const GAMES = [
+      { id: 1, url: 'https://www.roblox.com/games/95145490867665/Parkour-Obby-W7', name: 'Parkour Obby', img: '/src/img/ParkourObby.webp', desc: 'An obby with parkour mechanics scripted in my custom framework.' },
+      { id: 2, url: 'https://www.roblox.com/games/110729496024718/Find-the-Ducks-2', name: 'Find the Ducks 2', img: '/src/img/FindtheDucks2.png', desc: 'Chill duck finding game. It is not scripted really well.' },
+      { id: 3, url: 'https://www.roblox.com/games/7585576110/Squid-Game-S3', name: 'Squid Game', img: '/src/img/SquidGames.png', desc: 'Roblox squid game slop' },
+      { id: 4, url: 'https://www.roblox.com/games/93143404496454/Protect-The-House-From-Brainrots', name: 'Protect The House From Brainrots', img: '/src/img/ProtectTheHouseFromBrainrots.webp', desc: 'A quick base defense game scipted in knit.' },
+      { id: 5, url: 'https://www.roblox.com/games/105228308854269/Break-Bones-Tower', name: 'Break Bones Tower', img: '/src/img/BreakBones.webp', desc: 'A tower obby game, where you break bones.' },
+      { id: 6, url: 'https://www.roblox.com/games/75917364083659/UPD-Parkour-Rush', name: 'Parkour Rush', img: '/src/img/ParkourRush.webp', desc: 'Predecessor to Parkour Obby. This one was never scripted too well, but has been made even buggier by new devs.' },
+      { id: 7, url: 'https://www.roblox.com/games/137934990603939/Boomerang-Battles', name: 'Boomerang Battles', img: '/src/img/BoomerangBattles.webp', desc: 'A game where you throw boomerangs to kill other players. I thought its fun, but it flopped.' },
+      { id: 8, url: 'https://www.roblox.com/games/116739501459923/Draw-Troll-Tower', name: 'Draw Troll Tower', img: '/src/img/DrawTower.webp', desc: 'A tower obby game, where you can also draw.' },
+      { id: 9, url: 'https://www.roblox.com/games/18984604254/Find-the-Ducks', name: 'Find the Ducks', img: '/src/img/FindTheDucks.webp', desc: 'Find the Ducks 1. This is my first game that was a success.' },
+      { id: 10, url: 'https://www.roblox.com/games/93262383642831/Find-the-Ducks-3', name: 'Find the Ducks 3', img: '/src/img/FTD_thumb.png', desc: 'MORE DUCKS!' }
     ];
   </script>
 </body>
+
 </html>
