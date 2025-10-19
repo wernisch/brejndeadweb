@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3N8J87ECLN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-3N8J87ECLN');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brejndead - Misfits Gaming</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/src/logo.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;700&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body class="text-white bg-black selection:bg-white selection:text-black">
+  <header class="fixed inset-x-0 top-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-5">
+      <div class="h-16 flex items-center justify-between">
+        <a href="/" class="brand text-xl tracking-wider font-bold flex items-center gap-2 focus-visible">
+          <img src="/src/logo.png" alt="" class="h-7 w-7 rounded-md"> Brejndead
+        </a>
+        <nav class="hidden md:flex items-center gap-8 brand text-sm tracking-widest uppercase">
+          <a href="/#about" class="nav-link focus-visible">About</a>
+          <a href="/#projects" class="nav-link focus-visible">Projects</a>
+          <a href="/#pricing" class="nav-link focus-visible">Pricing</a>
+          <a href="/#contact" class="btn btn-primary btn-bounce focus-visible">Contact</a>
+        </nav>
+        <button id="menuBtn"
+          class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/20 focus-visible"
+          aria-label="Open menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" class="pointer-events-none">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileNav" class="md:hidden hidden border-t border-white/10 bg-black/80 backdrop-blur-xl">
+      <div class="max-w-7xl mx-auto px-5 py-4 brand text-sm tracking-widest uppercase space-y-3">
+        <a href="/#about" class="block py-2 nav-link">About</a>
+        <a href="/#projects" class="block py-2 nav-link">Projects</a>
+        <a href="/#pricing" class="block py-2 nav-link">Pricing</a>
+        <a href="/#contact" class="btn btn-primary w-full">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24">
+    <section class="relative section">
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute -left-40 -top-40 w-96 h-96 rounded-full blur-3xl opacity-30 bg-cyan-400/30"></div>
+        <div class="absolute -right-20 bottom-0 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-25 bg-white/20"></div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-6">
+        <nav class="text-sm text-white/70 mb-4" aria-label="Breadcrumb" data-aos="fade-up">
+          <a href="/" class="hover:underline">Home</a>
+          <span class="mx-2">/</span>
+          <a href="/#clients" class="hover:underline">Who I worked with</a>
+          <span class="mx-2">/</span>
+          <span class="text-white">Misfits</span>
+        </nav>
+
+        <div class="glass rounded-3xl p-8 md:p-12 shadow-2xl" data-aos="fade-up" data-aos-delay="50">
+          <div class="flex items-center gap-5">
+            <div class="h-20 w-20 rounded-xl border border-white/10 bg-white/5 grid place-items-center overflow-hidden">
+              <img src="/src/img/Misfits.svg" alt="Misfits" class="h-14 w-14 object-contain opacity-90" />
+            </div>
+            <div>
+              <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Misfits Gaming - Scripting</h1>
+              <p class="text-white/70 mt-1">Selected work and shipped games.</p>
+            </div>
+          </div>
+
+          <div class="mt-8 grid md:grid-cols-2 gap-6 text-sm">
+            <div class="glass rounded-2xl p-5">
+              <p class="uppercase tracking-[0.25em] text-white/60 text-xs">Role</p>
+              <p class="mt-2 text-white">Roblox Scripter • Systems • Optimizations</p>
+            </div>
+            <div class="glass rounded-2xl p-5">
+              <p class="uppercase tracking-[0.25em] text-white/60 text-xs">Stack</p>
+              <p class="mt-2 text-white">Luau</p>
+            </div>
+          </div>
+
+          <p class="text-gray-300 mt-6 max-w-3xl">
+            Full-stack development for Misfits Gaming
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-16 section">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8" data-aos="fade-up">Games</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="glass rounded-2xl overflow-hidden hover:scale-[1.01] transition shadow-xl" data-aos="fade-up"
+          data-aos-delay="50">
+          <div class="aspect-video bg-white/5 border-b border-white/10 overflow-hidden">
+            <img src="/src/img/BrainrotBridgeThumbnail.webp" alt="Brainrot Bridge"
+              class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-xl font-semibold">Brainrot Bridge Battles!</h3>
+              <span class="tag px-3 py-1 rounded-full text-xs">Roblox</span>
+            </div>
+            <p class="text-gray-300 mt-2">
+              Added new features including Boosters, Brainrot RPGs, a Troll Menu, and more.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="https://www.roblox.com/games/120394952394267/Brainrot-Bridge-Battles-UPD" target="_blank"
+                class="btn btn-outline btn-bounce px-4 py-2 text-sm text-white hover:text-white">
+                View
+              </a>
+              <span class="text-xs text-white/60">Role: Scripting</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass rounded-2xl overflow-hidden hover:scale-[1.01] transition shadow-xl" data-aos="fade-up"
+          data-aos-delay="100">
+          <div class="aspect-video bg-white/5 border-b border-white/10 overflow-hidden">
+            <img src="/src/img/SurviveBunkerThumbnail.webp" alt="99 Nights Bunker" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-xl font-semibold">99 Nights in the Bunker</h3>
+              <span class="tag px-3 py-1 rounded-full text-xs">Roblox</span>
+            </div>
+            <p class="text-gray-300 mt-2">
+              Fixed bunch of bugs, heavily optimized their MemoryStore usage, and more.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="https://www.roblox.com/games/73398239244597/99-Nights-in-the-Bunker-FURNISH-THE-BUNKER" target="_blank"
+                class="btn btn-outline btn-bounce px-4 py-2 text-sm text-white hover:text-white">
+                View
+              </a>
+
+              <span class="text-xs text-white/60">Role: Scripting, Optimizing</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass rounded-2xl overflow-hidden hover:scale-[1.01] transition shadow-xl" data-aos="fade-up"
+          data-aos-delay="100">
+          <div class="aspect-video bg-white/5 border-b border-white/10 overflow-hidden">
+            <img src="/src/img/AngryBrainrots.webp" alt="99 Nights Bunker" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-xl font-semibold">Angry Brainrots</h3>
+              <span class="tag px-3 py-1 rounded-full text-xs">Roblox</span>
+            </div>
+            <p class="text-gray-300 mt-2">
+              Fixed bunch of bugs and implemented new features.
+            </p>
+            <div class="mt-4 flex items-center gap-3">
+              <a href="https://www.roblox.com/games/72210142604776/Angry-Brainrots" target="_blank"
+                class="btn btn-outline btn-bounce px-4 py-2 text-sm text-white hover:text-white">
+                View
+              </a>
+
+              <span class="text-xs text-white/60">Role: Scripting, Optimizing</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/#clients" class="btn btn-outline px-5 py-3">← Back to “Who I worked with”</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center text-sm p-8 bg-black text-white border-t border-white/10">
+    <p class="text-white/70">© <span id="year"></span> Brejndead, I like borzois.</p>
+  </footer>
+
+  <script src="/src/js/animate.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true });
+
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    if (btn && nav) {
+      btn.addEventListener('click', () => {
+        nav.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', nav.classList.contains('hidden') ? 'false' : 'true');
+      });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.add('hidden')));
+    }
+  </script>
+</body>
+
+</html>
