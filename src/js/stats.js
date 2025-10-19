@@ -1,6 +1,6 @@
 import { CountUp } from "/src/js/countup.js";
 
-const JsonUrl = "https://raw.githubusercontent.com/wernisch/mati-games-stats/main/public/games.json";
+const JsonUrl = "https://raw.githubusercontent.com/wernisch/brejndead-stats/main/public/games.json";
 
 let Totals = { GamesCount: 0, TotalPlayers: 0, TotalVisits: 0, AverageRating: 0 };
 let TotalsPromise = null;
