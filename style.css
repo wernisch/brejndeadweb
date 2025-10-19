@@ -1,9 +1,13 @@
 html {
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
-    font-family: 'Space Grotesk', sans-serif
+    font-family: 'Space Grotesk', sans-serif;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
