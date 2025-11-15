@@ -1,6 +1,6 @@
 import { CountUp } from "/src/js/countup.js";
 
-const JsonUrl = "https://raw.githubusercontent.com/wernisch/brejndead-stats/main/public/games.json";
+const JsonUrl = "https://raw.githubusercontent.com/wernisch/brejndead-stats/refs/heads/main/public/games.json";
 
 let Totals = { GamesCount: 0, TotalPlayers: 0, TotalVisits: 0, AverageRating: 0 };
 let TotalsPromise = null;
@@ -10,7 +10,7 @@ let HeroGamesDisplay, HeroPlayersDisplay, HeroVisitsDisplay;
 let GridInitialized = false;
 
 function abbreviate(n) {
-  const num = Number(n);
+  const num = Number(n) || 0;
   if (num >= 1e9) return (num / 1e9).toFixed(num % 1e9 ? 1 : 0) + "B";
   if (num >= 1e6) return (num / 1e6).toFixed(num % 1e6 ? 1 : 0) + "M";
   if (num >= 1e3) return (num / 1e3).toFixed(num % 1e3 ? 1 : 0) + "K";
@@ -32,19 +32,28 @@ async function FetchJsonWithRetry(url, retries = 3, delayMs = 600) {
 
 async function LoadTotalsOnce() {
   if (TotalsPromise) return TotalsPromise;
+
   TotalsPromise = (async () => {
     const data = await FetchJsonWithRetry(JsonUrl);
     const games = Array.isArray(data?.games) ? data.games : [];
 
-    const TotalPlayers = games.reduce((sum, g) => sum + (Number(g.playing) || 0), 0);
-    const TotalVisits  = games.reduce((sum, g) => sum + (Number(g.visits)  || 0), 0);
+    const TotalPlayers = games.reduce(
+      (sum, g) => sum + (Number(g.playing) || 0),
+      0
+    );
+    const TotalVisits = games.reduce(
+      (sum, g) => sum + (Number(g.visits) || 0),
+      0
+    );
 
     const ValidRatings = games
       .map(g => Number(g.likeRatio))
       .filter(v => Number.isFinite(v) && v >= 0);
 
     const AverageRating = ValidRatings.length
-      ? Math.round(ValidRatings.reduce((s, v) => s + v, 0) / ValidRatings.length)
+      ? Math.round(
+          ValidRatings.reduce((s, v) => s + v, 0) / ValidRatings.length
+        )
       : 0;
 
     Totals = {
@@ -55,13 +64,14 @@ async function LoadTotalsOnce() {
     };
     return Totals;
   })();
+
   return TotalsPromise;
 }
 
 function RenderHero(t) {
-  const heroGamesEl   = document.getElementById("hero-games");
+  const heroGamesEl = document.getElementById("hero-games");
   const heroPlayersEl = document.getElementById("hero-players");
-  const heroVisitsEl  = document.getElementById("hero-visits");
+  const heroVisitsEl = document.getElementById("hero-visits");
 
   if (heroGamesEl && !HeroGamesDisplay) {
     HeroGamesDisplay = new CountUp(heroGamesEl, t.GamesCount, {
@@ -103,10 +113,25 @@ function InitializeCountUp(GamesCreated) {
   const visitsEl = document.getElementById("visits-count");
   const visitsAbbrev = visitsEl && (visitsEl.getAttribute("data-abbrev") === "true");
 
-  PlayerCountDisplay   = new CountUp("player-count", 0, { duration: 2, separator: "," });
-  VisitsCountDisplay   = new CountUp("visits-count", 0, { duration: 2, separator: ",", formattingFn: visitsAbbrev ? abbreviate : undefined });
-  GamesCreatedDisplay  = new CountUp("games-created", 0, { duration: 2, separator: ",", suffix: "+" });
-  AverageRatingDisplay = new CountUp("average-rating", 0, { duration: 1, decimalPlaces: 0, suffix: "%" });
+  PlayerCountDisplay = new CountUp("player-count", 0, {
+    duration: 2,
+    separator: ","
+  });
+  VisitsCountDisplay = new CountUp("visits-count", 0, {
+    duration: 2,
+    separator: ",",
+    formattingFn: visitsAbbrev ? abbreviate : undefined
+  });
+  GamesCreatedDisplay = new CountUp("games-created", 0, {
+    duration: 2,
+    separator: ",",
+    suffix: "+"
+  });
+  AverageRatingDisplay = new CountUp("average-rating", 0, {
+    duration: 1,
+    decimalPlaces: 0,
+    suffix: "%"
+  });
 
   PlayerCountDisplay.start();
   VisitsCountDisplay.start();
